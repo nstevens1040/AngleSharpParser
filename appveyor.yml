@@ -12,7 +12,7 @@ nuget:
 deploy:
   - provider: NuGet
     server: https://nuget.pkg.github.com/nstevens1040/index.json
-    artifact: ./AngleSharpParser/bin/Release/net6.0/publish/win-x64/
+    artifact: AngleSharpParser/bin/Release/net6.0/
     username: nstevens1040
     api_key:
       secure: f+MLRpFFOj9kyNxbFyIt2n5I/dR48bmJ6qXRB/ageJ/18o61FDhu61IZgwk9KfqD
