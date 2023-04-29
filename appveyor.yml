@@ -6,7 +6,7 @@ before_build:
 - dotnet restore
 - dotnet clean
 - dotnet build
-- dotnet publish --arch x64 --configuration Release --framework net6.0 --self-contained true
+- dotnet publish --arch x64 --configuration Release --framework net6.0 --self-contained true /p:PublishSingleFile=true
 nuget:
   project_feed: true
 deploy:
