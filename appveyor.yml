@@ -18,9 +18,9 @@ deploy:
     api_key:
       secure: f+MLRpFFOj9kyNxbFyIt2n5I/dR48bmJ6qXRB/ageJ/18o61FDhu61IZgwk9KfqD
 artifacts:
-  - path: AngleSharpParser.1.0.{build}.zip
+  - path: AngleSharpParser*.zip
     name: AngleSharpParser
     type: File
 after_build:
 - ps: >-
-    refreshenv; . 7z.exe a "AngleSharpParser.1.0.$($ENV:APPVEYOR_BUILD_NUMBER).zip" .\AngleSharpParser\bin\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.$($ENV:APPVEYOR_BUILD_NUMBER).zip" -FileName "AngleSharpParser.1.0.$($ENV:APPVEYOR_BUILD_NUMBER).zip"
+    refreshenv; . 7z.exe a "AngleSharpParser.1.0.$($ENV:APPVEYOR_BUILD_NUMBER).zip" .\AngleSharpParser\bin\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.$($ENV:APPVEYOR_BUILD_NUMBER).zip" -FileName "AngleSharpParser.1.0.$($ENV:APPVEYOR_BUILD_NUMBER).zip"; if( @(get-childitem -Path AngleSharpParser\bin\x64\Release\).Where({$_.Extension -eq ".nupkg"}) ){ $nupkg = @(get-childitem -Path AngleSharpParser\bin\x64\Release\).Where({$_.Extension -eq ".nupkg"})[0]; Copy-Item $nupkg.FullName . ; Push-AppveyorArtifact "$($PWD.Path)\$($nupkg.Name)" -FileName "$($nupkg.Name)" }
