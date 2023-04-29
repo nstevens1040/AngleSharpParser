@@ -23,4 +23,4 @@ artifacts:
     type: File
 after_build:
 - ps: >-
-    refreshenv; . 7z.exe a AngleSharpParser.1.0.33.zip .\AngleSharpParser\bin\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.33.zip -FileName AngleSharpParser.1.0.33.zip
+    refreshenv; . 7z.exe a AngleSharpParser.1.0.33.zip .\AngleSharpParser\bin\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.33.zip" -FileName AngleSharpParser.1.0.33.zip
