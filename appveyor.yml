@@ -6,7 +6,7 @@ before_build:
 - dotnet clean
 - dotnet restore
 build_script:
-- dotnet build --framework net6.0 --configuration Release --verbosity normal --self-contained
+- dotnet build --framework net6.0 --configuration Release --verbosity normal --self-contained AngleSharpParser.sln
 nuget:
   project_feed: true
 deploy:
@@ -20,7 +20,7 @@ artifacts:
   - path: AngleSharpParser.1.0.{build}.nupkg
     name: AngleSharpParserNupkg
     type: File
-  - path: C:/projects/anglesharpparser/AngleSharpParser/bin/Release/net6.0/AngleSharpParser.dll
+  - path: AngleSharpParser/bin/Release/net6.0/AngleSharpParser.dll
     name: AngleSharpParser
     type: File
 after_build:
