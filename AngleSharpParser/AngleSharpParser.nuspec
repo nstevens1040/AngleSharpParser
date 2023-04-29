@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>AngleSharpParser</id>
+    <version>1.0.39</version>
+    <title>AngleSharpParser</title>
+    <authors>nstevens1040</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">Unlicense</license>
+    <projectUrl>https://github.com/nstevens1040/AngleSharpParser</projectUrl>
+    <description>This .NET 6.0 library uses AngleSharp to parse an HTML string into a DOM. It is written such that it can be easily used in PowerShell Core.</description>
+    <releaseNotes>First release</releaseNotes>
+    <copyright>Copyright © nstevens1040 2023</copyright>
+    <tags>html parser parse csharp dom powershell document-object-model dotnet-core net-core powershell-core net6 dotnet-6 net-core-6</tags>
+    <repository type="git" url="https://github.com/nstevens1040/AngleSharpParser.git" branch="master" commit="" />
+  </metadata>
+</package>
