@@ -12,7 +12,6 @@ before_build:
 #- dotnet build --framework net6.0 --configuration Release --verbosity normal --self-contained AngleSharpParser.sln
 build:
   publish_nuget: true
-  include_nuget_references: true
   verbosity: normal
   project: AngleSharpParser.sln
 nuget:
@@ -30,4 +29,4 @@ artifacts:
     type: File
 after_build:
 - ps: >-
-    refreshenv; . 7z.exe a "AngleSharpParser.1.0.$($ENV:APPVEYOR_BUILD_NUMBER).zip" .\AngleSharpParser\bin\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.$($ENV:APPVEYOR_BUILD_NUMBER).zip" -FileName "AngleSharpParser.1.0.$($ENV:APPVEYOR_BUILD_NUMBER).zip"; if( @(get-childitem -Recurse -Path AngleSharpParser\bin ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"}) ){ $nupkg = @(get-childitem -Recurse -Path AngleSharpParser\bin ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"})[0]; Copy-Item $nupkg.FullName . ; Push-AppveyorArtifact "$($PWD.Path)\$($nupkg.Name)" -FileName "$($nupkg.Name)" }
+    refreshenv; . 7z.exe a "AngleSharpParser.1.0.$($ENV:APPVEYOR_BUILD_NUMBER).zip" .\AngleSharpParser\bin\x64\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.$($ENV:APPVEYOR_BUILD_NUMBER).zip" -FileName "AngleSharpParser.1.0.$($ENV:APPVEYOR_BUILD_NUMBER).zip"; if( @(get-childitem -Recurse -Path AngleSharpParser\bin ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"}) ){ $nupkg = @(get-childitem -Recurse -Path AngleSharpParser\bin ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"})[0]; Copy-Item $nupkg.FullName . ; Push-AppveyorArtifact "$($PWD.Path)\$($nupkg.Name)" -FileName "$($nupkg.Name)" }
