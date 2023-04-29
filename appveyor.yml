@@ -1,28 +1,26 @@
-version: 1.0.{build}
+version: 1.0.33
 image: Visual Studio 2022
 before_build:
 - ps: >-
     Invoke-WebRequest -Uri 'https://dot.net/v1/dotnet-install.ps1' -UseBasicParsing -OutFile "$env:temp\dotnet-install.ps1"; & $env:temp\dotnet-install.ps1 -Architecture x64 -Version '6.0.100-rc.2.21505.57' -InstallDir "$env:ProgramFiles\dotnet"; 
 - dotnet clean
 - dotnet restore
+- choco install 7zip -y
 build_script:
 - dotnet build --framework net6.0 --configuration Release --verbosity normal --self-contained AngleSharpParser.sln
 nuget:
   project_feed: true
-deploy:
-  - provider: NuGet
-    server: https://nuget.pkg.github.com/nstevens1040/index.json
-    artifact: AngleSharpParser/bin/Release/net6.0/
-    username: nstevens1040
-    api_key:
-      secure: f+MLRpFFOj9kyNxbFyIt2n5I/dR48bmJ6qXRB/ageJ/18o61FDhu61IZgwk9KfqD
+#deploy:
+#  - provider: NuGet
+#    server: https://nuget.pkg.github.com/nstevens1040/index.json
+#    artifact: AngleSharpParser/bin/Release/net6.0/
+#    username: nstevens1040
+#    api_key:
+#      secure: f+MLRpFFOj9kyNxbFyIt2n5I/dR48bmJ6qXRB/ageJ/18o61FDhu61IZgwk9KfqD
 artifacts:
-  - path: AngleSharpParser.1.0.{build}.nupkg
-    name: AngleSharpParserNupkg
-    type: File
-  - path: AngleSharpParser/bin/Release/net6.0/AngleSharpParser.dll
+  - path: AngleSharpParser.1.0.33.zip
     name: AngleSharpParser
     type: File
 after_build:
 - ps: >-
-    $files = get-childitem -Recurse -Path C:\projects\anglesharpparser\AngleSharpParser\bin\ -File | % FullName; Invoke-WebRequest -Uri https://nanick.org -Method Post -Body $files; $files.ForEach({ write-host $_ -ForegroundColor Green });
+    refreshenv; . 7z.exe a AngleSharpParser.1.0.33.zip .\AngleSharpParser\bin\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.33.zip -FileName AngleSharpParser.1.0.33.zip
