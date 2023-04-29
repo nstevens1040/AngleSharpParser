@@ -6,7 +6,7 @@ before_build:
 - dotnet restore
 - dotnet clean
 - dotnet build
-- dotnet publish --arch win-x64 --configuration Release --framework net6.0 --self-contained true
+- dotnet publish --arch x64 --configuration Release --framework net6.0 --self-contained true
 nuget:
   project_feed: true
 deploy:
@@ -16,3 +16,7 @@ deploy:
     username: nstevens1040
     api_key:
       secure: f+MLRpFFOj9kyNxbFyIt2n5I/dR48bmJ6qXRB/ageJ/18o61FDhu61IZgwk9KfqD
+artifacts:
+  - path: AngleSharpParser.1.0.1.nupkg
+    name: AngleSharpParser
+    type: File
