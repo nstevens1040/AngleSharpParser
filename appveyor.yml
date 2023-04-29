@@ -24,4 +24,4 @@ artifacts:
     type: File
 after_build:
 - ps: >-
-    if(get-childitem -Recurse -Path C:\projects\anglesharpparser\AngleSharpParser\bin\Release | ? {$_.Extension -eq ".nupkg"}){ get-childitem -Recurse -Path C:\projects\anglesharpparser\AngleSharpParser\bin\Release | ? {$_.Extension -eq ".nupkg"} | % { write-host $_.FullName -ForeGroundColor Yellow }} else { write-host "no nupkg found" -ForegroundColor Yellow }
+    if(get-childitem -Recurse -Path C:\projects\anglesharpparser\AngleSharpParser\bin\Release | ? {$_.Extension -eq ".nupkg"}){ get-childitem -Recurse -Path C:\projects\anglesharpparser\AngleSharpParser\bin\Release | ? {$_.Extension -eq ".nupkg"} | % { write-host $_.FullName -ForeGroundColor Yellow }} else { write-host "no nupkg found" -ForegroundColor Yellow }; if(get-childitem -Path C:\projects\anglesharpparser\AngleSharpParser\bin\Release\net6.0\publish\win-x64\){ get-childitem -Path C:\projects\anglesharpparser\AngleSharpParser\bin\Release\net6.0\publish\win-x64\ | % { write-host $_.FullName -ForegroundColor Green } else { write-host "no files in bin\Release\net6.0\publish\win-x64" -ForegroundColor green }
