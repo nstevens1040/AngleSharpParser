@@ -1,4 +1,4 @@
-version: 1.0.33
+version: 1.0.35
 image: Visual Studio 2022
 before_build:
 - ps: >-
@@ -18,9 +18,9 @@ nuget:
 #    api_key:
 #      secure: f+MLRpFFOj9kyNxbFyIt2n5I/dR48bmJ6qXRB/ageJ/18o61FDhu61IZgwk9KfqD
 artifacts:
-  - path: AngleSharpParser.1.0.33.zip
+  - path: AngleSharpParser.1.0.35.zip
     name: AngleSharpParser
     type: File
 after_build:
 - ps: >-
-    refreshenv; . 7z.exe a AngleSharpParser.1.0.33.zip .\AngleSharpParser\bin\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.33.zip" -FileName AngleSharpParser.1.0.33.zip
+    refreshenv; . 7z.exe a AngleSharpParser.1.0.35.zip .\AngleSharpParser\bin\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.35.zip" -FileName AngleSharpParser.1.0.35.zip
