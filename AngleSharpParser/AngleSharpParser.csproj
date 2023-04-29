@@ -1,13 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Description>This .NET 6.0 library uses AngleSharp to parse an HTML string into a DOM. It is written such that it can be easily used in PowerShell Core.</Description>
+    <Copyright>nstevens 2023</Copyright>
+    <PackageProjectUrl>https://github.com/nstevens1040/AngleSharpParser</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nstevens1040/AngleSharpParser.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>html;parser;parse;csharp;dom;powershell;document-object-model;dotnet-core;net-core;powershell-core;net6;dotnet-6;net-core-6</PackageTags>
+    <AssemblyVersion>1.0.4</AssemblyVersion>
+    <FileVersion>1.0.4</FileVersion>
+    <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
+    <Version>1.0.4</Version>
+    <Authors>nstevens1040</Authors>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AngleSharpParser.nuspec" />
     <None Remove="lib\AngleSharp.dll" />
   </ItemGroup>
 
