@@ -1,7 +1,8 @@
-version: 1.1.{build}
+version: 1.0.{build}
 image: Visual Studio 2019
 before_build:
-- Invoke-WebRequest -Uri 'https://dot.net/v1/dotnet-install.ps1' -UseBasicParsing -OutFile "$env:temp\dotnet-install.ps1"; & $env:temp\dotnet-install.ps1 -Architecture x64 -Version '6.0.100-rc.2.21505.57' -InstallDir "$env:ProgramFiles\dotnet"
+- ps: >-
+    Invoke-WebRequest -Uri 'https://dot.net/v1/dotnet-install.ps1' -UseBasicParsing -OutFile "$env:temp\dotnet-install.ps1"; & $env:temp\dotnet-install.ps1 -Architecture x64 -Version '6.0.100-rc.2.21505.57' -InstallDir "$env:ProgramFiles\dotnet"
 - nuget restore
 - choco install opencover.portable
 - choco install codecov
