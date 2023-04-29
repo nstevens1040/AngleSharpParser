@@ -24,12 +24,12 @@ deploy:
     api_key:
       secure: f+MLRpFFOj9kyNxbFyIt2n5I/dR48bmJ6qXRB/ageJ/18o61FDhu61IZgwk9KfqD
   - provider: GitHub
-    tag: v1.0.45
-    release: v1.0.45 stable
+    tag: v1.0.46
+    release: v1.0.46 stable
     description: 'Pushing latest AngleSharpParser binaries.'
     auth_token:
       secure: ElzOGqa44YRqwJ9jKgjBNDbPEmxb1Mg3I+0TxsPQg8OdUSOA8T8DwkwoKofTXMQT
-    artifact: AngleSharpParser*.zip
+    artifact: AngleSharpParser*.zip,AngleSharpParser*.nupkg
     draft: false
     prerelease: false
 artifacts:
