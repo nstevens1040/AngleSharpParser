@@ -6,17 +6,13 @@ before_build:
 - dotnet restore
 - dotnet clean
 - dotnet build
+- dotnet publish --arch win-x64 --configuration Release --framework net6.0 --self-contained true
 nuget:
   project_feed: true
-build:
-  publish_nuget: true
-  include_nuget_references: true
-  verbosity: normal
-  project: AngleSharpParser.sln
 deploy:
   - provider: NuGet
     server: https://nuget.pkg.github.com/nstevens1040/index.json
-    artifact: /.nupkg/
+    artifact: ./AngleSharpParser/bin/Release/net6.0/publish/win-x64/
     username: nstevens1040
     api_key:
       secure: f+MLRpFFOj9kyNxbFyIt2n5I/dR48bmJ6qXRB/ageJ/18o61FDhu61IZgwk9KfqD
