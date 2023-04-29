@@ -17,6 +17,9 @@ deploy:
     api_key:
       secure: f+MLRpFFOj9kyNxbFyIt2n5I/dR48bmJ6qXRB/ageJ/18o61FDhu61IZgwk9KfqD
 artifacts:
-  - path: AngleSharpParser.1.0.1.nupkg
+  - path: AngleSharpParser.1.0.{build}.nupkg
     name: AngleSharpParser
     type: File
+after_build:
+- ps: >-
+    get-childitem -Path C:\projects\anglesharpparser\AngleSharpParser\bin\Release\net6.0\win-x64\publish\ | % { write-host $_.FullName -ForeGroundColor Yellow }
