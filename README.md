@@ -35,8 +35,8 @@ $html_string = @"
     </body>
 </html>
 "@
-
-$document = [Angle.SharpDom]::ParseFromString($html_string)
+$parser = [Angle.Sharp]::New()
+$document = $parser.GetDomDocument($html_string)
 $document.GetElementById("test").TextContent
 ```  
 The output should read

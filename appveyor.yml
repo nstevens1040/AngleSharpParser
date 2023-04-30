@@ -1,4 +1,4 @@
-version: 1.0.64
+version: 1.0.66
 image: Visual Studio 2022
 configuration: Release
 platform: x64
@@ -25,12 +25,12 @@ deploy:
     api_key:
       secure: 1fo4bhFuqGYKGzv2VK9P/beOi1S7DxBO+9Wg98pkKiOxNWPE/p4Fb9sPWk3qhLth
   - provider: GitHub
-    tag: v1.0.64
-    release: v1.0.64 stable
+    tag: v1.0.66
+    release: v1.0.66 stable
     description: 'Pushing latest AngleSharpParser binaries.'
     auth_token:
       secure: ElzOGqa44YRqwJ9jKgjBNDbPEmxb1Mg3I+0TxsPQg8OdUSOA8T8DwkwoKofTXMQT
-    artifact: AngleSharpParser.1.0.64.zip,AngleSharpParser-latest.nupkg
+    artifact: AngleSharpParser.1.0.66.zip,AngleSharpParser-latest.nupkg
     draft: false
     prerelease: false
 artifacts:
@@ -39,4 +39,4 @@ artifacts:
     type: File
 after_build:
 - ps: >-
-    refreshenv; . 7z.exe a "AngleSharpParser.1.0.64.zip" .\AngleSharpParser\bin\x64\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.64.zip" -FileName "AngleSharpParser.1.0.64.zip"; if( @(get-childitem -Recurse -Path "$($ENV:TEMP)" ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"}) ){ $nupkg = @(get-childitem -Recurse -Path "$($ENV:TEMP)" ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"})[0]; Copy-Item $nupkg.FullName . ; Move-Item -LiteralPath "$($PWD.Path)\$($nupkg.Name)" -Destination "$($PWD.Path)\AngleSharpParser-latest.nupkg"; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser-latest.nupkg" -FileName "AngleSharpParser-latest.nupkg" }
+    refreshenv; . 7z.exe a "AngleSharpParser.1.0.66.zip" .\AngleSharpParser\bin\x64\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.66.zip" -FileName "AngleSharpParser.1.0.66.zip"; if( @(get-childitem -Recurse -Path "$($ENV:TEMP)" ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"}) ){ $nupkg = @(get-childitem -Recurse -Path "$($ENV:TEMP)" ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"})[0]; Copy-Item $nupkg.FullName . ; Move-Item -LiteralPath "$($PWD.Path)\$($nupkg.Name)" -Destination "$($PWD.Path)\AngleSharpParser-latest.nupkg"; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser-latest.nupkg" -FileName "AngleSharpParser-latest.nupkg" }
