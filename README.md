@@ -1,5 +1,5 @@
-#AngleSharpParser
-##PowerShell Core Quick Start
+# AngleSharpParser  
+## PowerShell Core Quick Start  
    - **Load the DLL into PowerShell Core**
 ```ps1
 try { Set-ExecutionPolicy Bypass -Scope Process -Force } catch {}
