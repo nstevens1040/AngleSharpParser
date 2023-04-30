@@ -1,3 +1,4 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/115e41aqm9s820b5?svg=true)](https://ci.appveyor.com/project/nstevens1040/anglesharpparser)  
 # AngleSharpParser  
 ## PowerShell Core Quick Start  
    - **Load the DLL into PowerShell Core**
