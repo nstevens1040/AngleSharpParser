@@ -22,7 +22,7 @@ deploy:
     artifact: AngleSharpParser.1.0.51.nupkg
     username: nstevens1040
     api_key:
-      secure: f+MLRpFFOj9kyNxbFyIt2n5I/dR48bmJ6qXRB/ageJ/18o61FDhu61IZgwk9KfqD
+      secure: 1fo4bhFuqGYKGzv2VK9P/beOi1S7DxBO+9Wg98pkKiOxNWPE/p4Fb9sPWk3qhLth
   - provider: GitHub
     tag: v1.0.51
     release: v1.0.51 stable
