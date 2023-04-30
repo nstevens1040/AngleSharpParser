@@ -1,4 +1,4 @@
-version: 1.0.{build}
+version: 1.0.51
 image: Visual Studio 2022
 configuration: Release
 platform: x64
@@ -19,17 +19,17 @@ nuget:
 deploy:
   - provider: NuGet
     server: https://nuget.pkg.github.com/nstevens1040/index.json
-    artifact: AngleSharpParser.1.0.49.nupkg
+    artifact: AngleSharpParser.1.0.51.nupkg
     username: nstevens1040
     api_key:
       secure: f+MLRpFFOj9kyNxbFyIt2n5I/dR48bmJ6qXRB/ageJ/18o61FDhu61IZgwk9KfqD
   - provider: GitHub
-    tag: v1.0.49
-    release: v1.0.49 stable
+    tag: v1.0.51
+    release: v1.0.51 stable
     description: 'Pushing latest AngleSharpParser binaries.'
     auth_token:
       secure: ElzOGqa44YRqwJ9jKgjBNDbPEmxb1Mg3I+0TxsPQg8OdUSOA8T8DwkwoKofTXMQT
-    artifact: AngleSharpParser.1.0.49.zip,AngleSharpParser.1.0.49.nupkg
+    artifact: AngleSharpParser.1.0.51.zip,AngleSharpParser.1.0.51.nupkg
     draft: false
     prerelease: false
 artifacts:
@@ -38,4 +38,4 @@ artifacts:
     type: File
 after_build:
 - ps: >-
-    refreshenv; . 7z.exe a "AngleSharpParser.1.0.49.zip" .\AngleSharpParser\bin\x64\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.49.zip" -FileName "AngleSharpParser.1.0.49.zip"; if( @(get-childitem -Recurse -Path "$($ENV:TEMP)" ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"}) ){ $nupkg = @(get-childitem -Recurse -Path "$($ENV:TEMP)" ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"})[0]; Copy-Item $nupkg.FullName . ; Push-AppveyorArtifact "$($PWD.Path)\$($nupkg.Name)" -FileName "$($nupkg.Name)" }
+    refreshenv; . 7z.exe a "AngleSharpParser.1.0.51.zip" .\AngleSharpParser\bin\x64\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.51.zip" -FileName "AngleSharpParser.1.0.51.zip"; if( @(get-childitem -Recurse -Path "$($ENV:TEMP)" ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"}) ){ $nupkg = @(get-childitem -Recurse -Path "$($ENV:TEMP)" ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"})[0]; Copy-Item $nupkg.FullName . ; Push-AppveyorArtifact "$($PWD.Path)\$($nupkg.Name)" -FileName "$($nupkg.Name)" }
