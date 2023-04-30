@@ -12,10 +12,10 @@
     <RepositoryUrl>https://github.com/nstevens1040/AngleSharpParser.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>html;parser;parse;csharp;dom;powershell;document-object-model;dotnet-core;net-core;powershell-core;net6;dotnet-6;net-core-6</PackageTags>
-    <AssemblyVersion>1.0.55</AssemblyVersion>
-    <FileVersion>1.0.55</FileVersion>
+    <AssemblyVersion>1.0.58</AssemblyVersion>
+    <FileVersion>1.0.58</FileVersion>
     <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
-    <Version>1.0.55</Version>
+    <Version>1.0.58</Version>
     <Authors>nstevens1040</Authors>
   </PropertyGroup>
 

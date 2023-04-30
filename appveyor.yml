@@ -1,7 +1,8 @@
-version: 1.0.55
+version: 1.0.58
 image: Visual Studio 2022
 configuration: Release
 platform: x64
+skip_tags: true
 before_build:
 - ps: >-
     Invoke-WebRequest -Uri 'https://dot.net/v1/dotnet-install.ps1' -UseBasicParsing -OutFile "$env:temp\dotnet-install.ps1"; & $env:temp\dotnet-install.ps1 -Architecture x64 -Version '6.0.100-rc.2.21505.57' -InstallDir "$env:ProgramFiles\dotnet"; 
@@ -19,17 +20,17 @@ nuget:
 deploy:
   - provider: NuGet
     server: https://nuget.pkg.github.com/nstevens1040/index.json
-    artifact: AngleSharpParser.1.0.55.nupkg
+    artifact: AngleSharpParser.1.0.58.nupkg
     username: nstevens1040
     api_key:
       secure: 1fo4bhFuqGYKGzv2VK9P/beOi1S7DxBO+9Wg98pkKiOxNWPE/p4Fb9sPWk3qhLth
   - provider: GitHub
-    tag: v1.0.55
-    release: v1.0.55 stable
+    tag: v1.0.58
+    release: v1.0.58 stable
     description: 'Pushing latest AngleSharpParser binaries.'
     auth_token:
       secure: ElzOGqa44YRqwJ9jKgjBNDbPEmxb1Mg3I+0TxsPQg8OdUSOA8T8DwkwoKofTXMQT
-    artifact: AngleSharpParser.1.0.55.zip,AngleSharpParser.1.0.55.nupkg
+    artifact: AngleSharpParser.1.0.58.zip,AngleSharpParser.1.0.58.nupkg
     draft: false
     prerelease: false
 artifacts:
@@ -38,4 +39,4 @@ artifacts:
     type: File
 after_build:
 - ps: >-
-    refreshenv; . 7z.exe a "AngleSharpParser.1.0.55.zip" .\AngleSharpParser\bin\x64\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.55.zip" -FileName "AngleSharpParser.1.0.55.zip"; if( @(get-childitem -Recurse -Path "$($ENV:TEMP)" ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"}) ){ $nupkg = @(get-childitem -Recurse -Path "$($ENV:TEMP)" ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"})[0]; Copy-Item $nupkg.FullName . ; Push-AppveyorArtifact "$($PWD.Path)\$($nupkg.Name)" -FileName "$($nupkg.Name)" }
+    refreshenv; . 7z.exe a "AngleSharpParser.1.0.58.zip" .\AngleSharpParser\bin\x64\Release\net6.0\AngleSharpParser.dll; Push-AppveyorArtifact "$($PWD.Path)\AngleSharpParser.1.0.58.zip" -FileName "AngleSharpParser.1.0.58.zip"; if( @(get-childitem -Recurse -Path "$($ENV:TEMP)" ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"}) ){ $nupkg = @(get-childitem -Recurse -Path "$($ENV:TEMP)" ).Where({$_.Extension -eq ".nupkg" -and $_.Name -match "AngleSharpParser"})[0]; Copy-Item $nupkg.FullName . ; Push-AppveyorArtifact "$($PWD.Path)\$($nupkg.Name)" -FileName "$($nupkg.Name)" }

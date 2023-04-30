@@ -10,7 +10,7 @@
     using AngleSharp.Dom;
     using System.Reflection;
     using AngleSharpParser.Properties;
-    // test github fake change
+    // test 
     public class Parser
     {
         public Parser()
