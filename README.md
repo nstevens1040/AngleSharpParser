@@ -6,12 +6,12 @@
 try { Set-ExecutionPolicy Bypass -Scope Process -Force } catch {}
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 [System.Net.WebClient]::New().DownloadFile(
-    "https://github.com/nstevens1040/AngleSharpParser/releases/latest/download/AngleSharpParser.1.0.60.nupkg",
-    "$($ENV:USERPROFILE)\Desktop\AngleSharpParser.1.0.60.nupkg"
+    "https://github.com/nstevens1040/AngleSharpParser/releases/latest/download/AngleSharpParser-latest.nupkg",
+    "$($ENV:USERPROFILE)\Desktop\AngleSharpParser-latest.nupkg"
 )
-$null = mkdir "$($ENV:USERPROFILE)\Desktop\AngleSharpParser.1.0.60"
-Expand-Archive -Path "$($ENV:USERPROFILE)\Desktop\AngleSharpParser.1.0.60.nupkg" -DestinationPath "$($ENV:USERPROFILE)\Desktop\AngleSharpParser.1.0.60"
-Add-Type -Path "$($ENV:USERPROFILE)\Desktop\AngleSharpParser.1.0.60\lib\net6.0\AngleSharpParser.dll"
+$null = mkdir "$($ENV:USERPROFILE)\Desktop\AngleSharpParser-latest"
+Expand-Archive -Path "$($ENV:USERPROFILE)\Desktop\AngleSharpParser-latest.nupkg" -DestinationPath "$($ENV:USERPROFILE)\Desktop\AngleSharpParser-latest"
+Add-Type -Path "$($ENV:USERPROFILE)\Desktop\AngleSharpParser-latest\lib\net6.0\AngleSharpParser.dll"
 ```  
 ### Do a simple test
 ```ps1
@@ -35,7 +35,11 @@ $html_string = @"
     </body>
 </html>
 "@
-$p = [AngleSharp.Parser]::new()
-$document = $p.GetDomDocument($html_string)
+
+$document = [Angle.SharpDom]::ParseFromString($html_string)
 $document.GetElementById("test").TextContent
+```  
+The output should read
+```ps1
+Test succeeded!
 ```  
